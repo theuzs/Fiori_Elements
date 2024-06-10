@@ -1,0 +1,196 @@
+{
+	"_version": "1.42.0",
+	"sap.app": {
+		"id": "com.agirre.zui5.relatorio.impressao",
+		"type": "application",
+		"i18n": "i18n/i18n.properties",
+		"applicationVersion": {
+			"version": "0.0.1"
+		},
+		"title": "{{appTitle}}",
+		"description": "{{appDescription}}",
+		"resources": "resources.json",
+		"sourceTemplate": {
+			"id": "@sap/generator-fiori:lrop",
+			"version": "1.13.3",
+			"toolsId": "cb54f8bf-8938-4a1e-9449-fecd7cb2e257"
+		},
+		"dataSources": {
+			"mainService": {
+				"uri": "/sap/opu/odata/sap/ZMSF_VBAP_LIPS_CDS/",
+				"type": "OData",
+				"settings": {
+					"annotations": [
+						"ZMSF_VBAP_LIPS_CDS_VAN",
+						"annotation"
+					],
+					"localUri": "localService/metadata.xml",
+					"odataVersion": "2.0"
+				}
+			},
+			"ZMSF_VBAP_LIPS_CDS_VAN": {
+				"uri": "/sap/opu/odata/IWFND/CATALOGSERVICE;v=2/Annotations(TechnicalName='ZMSF_VBAP_LIPS_CDS_VAN',Version='0001')/$value/",
+				"type": "ODataAnnotation",
+				"settings": {
+					"localUri": "localService/ZMSF_VBAP_LIPS_CDS_VAN.xml"
+				}
+			},
+			"annotation": {
+				"type": "ODataAnnotation",
+				"uri": "annotations/annotation.xml",
+				"settings": {
+					"localUri": "annotations/annotation.xml"
+				}
+			}
+		}
+	},
+	"sap.ui": {
+		"technology": "UI5",
+		"icons": {
+			"icon": "",
+			"favIcon": "",
+			"phone": "",
+			"phone@2": "",
+			"tablet": "",
+			"tablet@2": ""
+		},
+		"deviceTypes": {
+			"desktop": true,
+			"tablet": true,
+			"phone": true
+		}
+	},
+	"sap.ui5": {
+		"flexEnabled": true,
+		"dependencies": {
+			"minUI5Version": "1.102.2",
+			"libs": {
+				"sap.m": {},
+				"sap.ui.core": {},
+				"sap.ushell": {},
+				"sap.f": {},
+				"sap.ui.comp": {},
+				"sap.ui.generic.app": {},
+				"sap.suite.ui.generic.template": {},
+				"sap.ui.fl": {}
+			}
+		},
+		"contentDensities": {
+			"compact": true,
+			"cozy": true
+		},
+		"models": {
+			"i18n": {
+				"type": "sap.ui.model.resource.ResourceModel",
+				"settings": {
+					"bundleName": "com.agirre.zui5.relatorio.impressao.i18n.i18n"
+				}
+			},
+			"": {
+				"dataSource": "mainService",
+				"preload": true,
+				"settings": {
+					"defaultBindingMode": "TwoWay",
+					"defaultCountMode": "Inline",
+					"refreshAfterChange": false,
+					"metadataUrlParams": {
+						"sap-value-list": "none"
+					}
+				}
+			},
+			"@i18n": {
+				"type": "sap.ui.model.resource.ResourceModel",
+				"uri": "i18n/i18n.properties"
+			}
+		},
+		"resources": {
+			"css": []
+		},
+		"routing": {
+			"config": {},
+			"routes": [],
+			"targets": {}
+		},
+		"extends": {
+			"extensions": {
+				"sap.ui.controllerExtensions": {
+					"sap.suite.ui.generic.template.ListReport.view.ListReport": {
+						"controllerName": "com.agirre.zui5.relatorio.impressao.ext.controller.ListReportExt",
+						"sap.ui.generic.app": {
+							"ZMSF_VBAP_LIPS": {
+								"EntitySet": "ZMSF_VBAP_LIPS",
+								"Actions": {
+									"ButtonPrint": {
+										"id": "ButtonPrint",
+										"text": "Imprimir",
+										"press": "OnPressPrint",
+										"requiresSelection": true
+									}
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+	},
+	"sap.ui.generic.app": {
+		"_version": "1.3.0",
+		"settings": {
+			"forceGlobalRefresh": false,
+			"objectPageHeaderType": "Dynamic",
+			"considerAnalyticalParameters": true,
+			"showDraftToggle": false,
+			"flexibleColumnLayout": {
+				"defaultTwoColumnLayoutType": "TwoColumnsBeginExpanded",
+				"defaultThreeColumnLayoutType": "ThreeColumnsMidExpanded"
+			}
+		},
+		"pages": {
+			"ListReport|ZMSF_VBAP_LIPS": {
+				"entitySet": "ZMSF_VBAP_LIPS",
+				"component": {
+					"name": "sap.suite.ui.generic.template.ListReport",
+					"list": true,
+					"settings": {
+						"condensedTableLayout": true,
+						"smartVariantManagement": true,
+						"enableTableFilterInPageVariant": true,
+						"filterSettings": {
+							"dateSettings": {
+								"useDateRange": true
+							}
+						},
+						"tableSettings": {
+							"type": "ResponsiveTable",
+							"multiSelect": true
+						}
+					}
+				},
+				"pages": {
+					"ObjectPage|ZMSF_VBAP_LIPS": {
+						"entitySet": "ZMSF_VBAP_LIPS",
+						"defaultLayoutTypeIfExternalNavigation": "MidColumnFullScreen",
+						"component": {
+							"name": "sap.suite.ui.generic.template.ObjectPage"
+						},
+						"pages": {
+							"ObjectPage|to_DeliveryItems": {
+								"navigationProperty": "to_DeliveryItems",
+								"entitySet": "ZC_FE_DELIVERY_ITENS",
+								"defaultLayoutTypeIfExternalNavigation": "MidColumnFullScreen",
+								"component": {
+									"name": "sap.suite.ui.generic.template.ObjectPage"
+								}
+							}
+						}
+					}
+				}
+			}
+		}
+	},
+	"sap.fiori": {
+		"registrationIds": [],
+		"archeType": "transactional"
+	}
+}
