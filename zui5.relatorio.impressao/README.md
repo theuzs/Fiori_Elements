@@ -22,6 +22,19 @@
 ## zui5.relatorio.impressao
 
 Relatório de Ordens de vendas e impressão
+![Screenshot_3](https://github.com/user-attachments/assets/bf9a2526-356a-4719-90c7-b455171ac874)
+
+![Screenshot_1](https://github.com/user-attachments/assets/03a2253c-439b-4fb5-b848-9def911aa15e)
+
+![va03](https://github.com/user-attachments/assets/ac9a695c-2868-464d-a1c4-587b9e3d1648)
+
+![impr](https://github.com/user-attachments/assets/30e24c45-f191-47ba-b14e-37fa3d35d291)
+
+![impressaofoto](https://github.com/user-attachments/assets/1ee38185-190e-4b8a-937e-19b2edcf2652)
+
+![aaa](https://github.com/user-attachments/assets/8d97285b-0e41-45c3-8325-d9b292c6897e)
+
+
 
 ### Starting the generated app
 
